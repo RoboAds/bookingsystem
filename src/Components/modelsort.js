@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 
-const Models = ({ robots }) => {
+const Models = ({ robots, onRobotSelect }) => {
   const [selectedRobot, setSelectedRobot] = useState(null);
 
   const handleRobotSelect = (robot) => {
-    setSelectedRobot(robot);
+    if (selectedRobot === robot) {
+      setSelectedRobot(null);
+      onRobotSelect(null);
+    } else {
+      setSelectedRobot(robot);
+      onRobotSelect(robot.name);
+    }
   };
 
   return (
@@ -13,9 +19,10 @@ const Models = ({ robots }) => {
         <div
           key={robot.name}
           style={{
-            width: '110px',
-            height: '110px',
-            border: `5px solid ${selectedRobot === robot ? '#084BB4' : 'gray'}`,
+            width: '100px',
+            height: '100px',
+            border: `3.4px solid ${selectedRobot === robot ? '#084BB4' : 'gray'}`,
+            borderRadius: '7px',
             margin: '20px',
             display: 'flex',
             flexDirection: 'column',
@@ -25,8 +32,8 @@ const Models = ({ robots }) => {
           }}
           onClick={() => handleRobotSelect(robot)}
         >
-          <img src={robot.img} alt={robot.name} style={{ width: '70px', height: '70px' }} />
-          <h3 style={{ fontSize: '12px', marginTop: '5px' }}>{robot.name}</h3>
+          <img src={robot.img} alt={robot.name} style={{ width: '70px', height: '70px' , marginTop: '12px'}} />
+          <h3 style={{ fontSize: '15px', marginTop: '5px' }}>{robot.name}</h3>
         </div>
       ))}
     </div>

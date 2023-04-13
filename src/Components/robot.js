@@ -1,5 +1,6 @@
 export class Robot {
-    constructor(img, name, pricePerDay, features, description, type) {
+    constructor(id, img, name, pricePerDay, features, description, type) {
+      this.id = 1;
       this.img = img;
       this.name = name;
       this.pricePerDay = pricePerDay;

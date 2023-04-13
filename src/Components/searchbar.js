@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Form, Button, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+import { faSearch, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import './searchbar.css';
@@ -48,8 +49,9 @@ function Search() {
 
   return (
     <Form onSubmit={handleSubmit} className="search-form">
-      <h3>Search</h3>
+      <h3 >Search</h3>
       <Form.Group controlId="location">
+      <label htmlFor="to-input" className="date-label" id="to-label">Event location:</label>
         <div className="location-input-wrapper">
           <FormControl
             id="locationInput"
@@ -64,7 +66,7 @@ function Search() {
       </Form.Group>
 
       <div className="date-input-wrapper">
-        <label htmlFor="from-input" className="date-label" id="from-label">From</label>
+        <label htmlFor="from-input" className="date-label" id="from-label">Event start date</label>
         <Datetime
   inputProps={{
     id: 'from-input',
@@ -80,10 +82,14 @@ function Search() {
   value={fromDateTime || ''}
   onChange={(value) => handleDateTimeChange('from', value)}
 />
+<div className="dropdown-icon-wrapper">
+    <FontAwesomeIcon icon={faCaretDown} className="dropdown-icon" />
+  </div>
+
       </div>
 
       <div className="date-input-wrapper">
-        <label htmlFor="to-input" className="date-label" id="to-label">To</label>
+        <label htmlFor="to-input" className="date-label" id="to-label">Event end date</label>
         <Datetime
   inputProps={{
     id: 'to-input',
@@ -99,6 +105,9 @@ function Search() {
   value={toDateTime || ''}
   onChange={(value) => handleDateTimeChange('to', value)}
 />
+<div className="dropdown-icon-wrapper2">
+    <FontAwesomeIcon icon={faCaretDown} className="dropdown-icon2" />
+  </div>
 
 
         
