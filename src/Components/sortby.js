@@ -10,7 +10,7 @@ function SortBy({ onSort }) {
   };
 
   return (
-    <div className="sort-by-container">
+    <div className="sort-by_container">
       <div
         className={`sort-by-option ${activeOption === 'recommended' ? 'active' : ''}`}
         onClick={() => handleOptionClick('recommended')}

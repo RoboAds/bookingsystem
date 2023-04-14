@@ -1,8 +1,8 @@
 import React from 'react';
 import './productcard.css';
 
-function ProductCard({ name, description, features, pricePerDay, imageSrc, type }) {
-  const totalPrice = (pricePerDay * 3);
+function ProductCard({ name, description, features, pricePerDay, imageSrc, type, tenure }) {
+  const totalPrice = (pricePerDay * tenure);
   const cardClassName = `product-card ${type === 'rent' ? 'product-card--rent' : 'product-card--advertisement'}`;
   return (
     <div className={cardClassName}>

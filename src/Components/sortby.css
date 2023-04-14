@@ -1,7 +1,6 @@
-.sort-by-container {
+.sort-by_container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
   }
   
   .sort-by-option {
@@ -24,3 +23,4 @@
     color: white;
   }
   
+ 

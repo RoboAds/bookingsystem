@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
-import Search from './searchbar';
+import SearchComp from './searchbarcomp';
 import Filter from './filter';
 import ProductCard from './productcard';
 import Map from './map';
 import SortBy from './sortby';
 import Models from './modelsort';
+import { useLocation } from 'react-router-dom';
+import './search-results.css'
+
 const SearchResults = ({}) => {
   const [sortByText, setSortByText] = useState('');
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const tenure = searchParams.get('tenure');
+  const tenure_int = Number(tenure.split('days')[0])
+  const from = searchParams.get('from');
+  const to = searchParams.get('to');
   const [robots, setRobots] = useState([
     {
       id:1,
@@ -129,6 +138,8 @@ const SearchResults = ({}) => {
     },
   ]);
 
+
+
   
   const handleSort = (text) => {
     setSortByText(text);
@@ -176,37 +187,52 @@ const SearchResults = ({}) => {
   
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <Navbar />
-      <div style={{ display: 'flex', flexDirection: 'row', height: '85%',  }}>
-        <div style={{ width: '28.2%', padding: '20px', paddingLeft: '50px' }}>
-          <Search />
-          <Filter robots={robots} onFilterChange={handleFilter} />
+<div className="main-container">
+  <Navbar />
+  <div className="row-container">
+    
+    <div className="sidebar-container">
+      <SearchComp from={from} to={to} />
+      <Filter robots={robots} onFilterChange={handleFilter} />
+    </div>
+    <div className="main-content-container">
+      <div className="header-container">
+        <div className="models-container">
+          <Models robots={robot} onRobotSelect={handleRobotSelect} />
         </div>
-        <div style={{ width: '64%', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-        <div style={{ display: 'flex' }}>
-        <Models robots={robot} onRobotSelect={handleRobotSelect} />
-    <Map />
-  </div>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0px', marginRight:'19vw' }}>
-            <h1 style={{ fontWeight: 'bold', fontSize: '20px', marginRight: '20px', marginBottom:'30px' }}>Sort by:</h1>
-            <SortBy onSort={handleSort} />
-          </div>
-          {filteredRobots.map(robot => (
-  <ProductCard
-    key={robot.id}
-    imageSrc={robot.img}
-    name={robot.name}
-    type={robot.type}
-    pricePerDay={robot.pricePerDay}
-    features={robot.features}
-    description={robot.description}
-  />
-))}
+        <div className="map-container">
+          <Map />
         </div>
       </div>
+      <div className="sort-by-container">
+        <h1 className="sort-by-label">Sort by:</h1>
+        <SortBy onSort={handleSort} />
+      </div>
+      <div className="product-card-container">
+        {filteredRobots.map(robot => (
+          <ProductCard
+            key={robot.id}
+            imageSrc={robot.img}
+            name={robot.name}
+            type={robot.type}
+            pricePerDay={robot.pricePerDay}
+            features={robot.features}
+            description={robot.description}
+            tenure={tenure_int}
+          />
+        ))}
+      </div>
     </div>
+  </div>
+</div>
   );
+  
+  
+  
+  
+
+
+  
 };
   
 

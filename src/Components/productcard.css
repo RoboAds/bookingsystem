@@ -9,7 +9,6 @@
   border-radius: 5px;
   margin: 10px;
   padding: 20px;
-  margin-right: 120px;
   padding-top: 20px;
   position: relative;
 }
@@ -168,37 +167,7 @@
   height: 45px;
   font-size: 15px;
 }
-    
-    @media screen and (max-width: 768px) {
-    .product-card {
-    flex-direction: column;
-    height: auto;
-    }
-    
-    .product-card__image-container {
-    width: 100%;
-    height: 200px;
-    margin-bottom: 10px;
-    }
-    
-    .product-card__details-container {
-    width: 100%;
-    padding: 0;
-    }
-    
-    .product-card__name {
-    font-size: 20px;
-    }
-    
-    .product-card__price {
-    font-size: 16px;
-    }
-    
-    .product-card__button {
-    font-size: 10px;
-    
-    }
-    }  
+      
 
     .product-card__additional-info-container {
       text-align: right;
@@ -211,3 +180,124 @@
     .product-card__price-green {
       color: green;
     }
+    @media only screen and (max-width: 600px) {
+      
+      .product-card {
+        flex-direction: column;
+        width: 100%;
+        max-height: 500px;
+        padding: 10px;
+      }
+    
+      .product-card:before {
+        border-width: 0 80px 80px 0;
+      }
+    
+      .product-card__image-container {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+    
+      .product-card__image {
+        height: 200px;
+        max-width: 100%;
+      }
+    
+      .product-card__details-container {
+        width: 100%;
+        height: auto;
+        padding: 0;
+      }
+    
+      .product-card__name {
+        font-size: 24px;
+        margin-right: 10px;
+        margin-bottom: 5px;
+      }
+    
+      .product-card__features-container {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    
+      .product-card__feature {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+    
+      .product-card__feature img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+      }
+    
+      .product-card__price-button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+      }
+    
+      .product-card__price {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+      }
+    
+      .product-card__total {
+        font-size: 0.9rem;
+      }
+    
+      .product-card__additional-info-container {
+        display: none;
+      }
+    
+      .product-card__description,
+      .product-card__button {
+        display: none;
+      }
+
+      .product-card__price-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+    
+    .product-card__price-per-day {
+        font-size: 1rem;
+    }
+    
+    .product-card__price-total {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .product-card--rent:after {
+      padding: 10px;
+      content: 'RENTAL';
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      position: absolute;
+      bottom: 91%;
+      right: 77%;
+      z-index: 2;
+    }
+    
+    .product-card--advertisement:after {
+      padding: 8px 10px;
+      content: 'ADS';
+      color: white;
+      font-size: 1px;
+      font-weight: bold;
+      position: absolute;
+      bottom: 92%;
+      right: 65%;
+      z-index: 2;
+    }
+    
+    }
+    
