@@ -8,6 +8,7 @@ import SortBy from './sortby';
 import Models from './modelsort';
 import { useLocation } from 'react-router-dom';
 import './search-results.css'
+import SearchCompMob from './searchcompmobile';
 
 const SearchResults = ({}) => {
   const [sortByText, setSortByText] = useState('');
@@ -187,44 +188,48 @@ const SearchResults = ({}) => {
   
 
   return (
-<div className="main-container">
-  <Navbar />
-  <div className="row-container">
-    
-    <div className="sidebar-container">
-      <SearchComp from={from} to={to} />
-      <Filter robots={robots} onFilterChange={handleFilter} />
-    </div>
-    <div className="main-content-container">
-      <div className="header-container">
-        <div className="models-container">
-          <Models robots={robot} onRobotSelect={handleRobotSelect} />
+    <div className="main-container">
+      <div style={{ marginBottom: '-20px' }}>
+      <Navbar />
+      </div>
+      <div className="search-comp-mob-container">
+        <SearchCompMob />
+      </div>
+      <div className="row-container">
+        <div className="sidebar-container">
+          <SearchComp from={from} to={to} />
+          <Filter robots={robots} onFilterChange={handleFilter} />
         </div>
-        <div className="map-container">
-          <Map />
+        <div className="main-content-container">
+          <div className="header-container">
+            <div className="models-container">
+              <Models robots={robot} onRobotSelect={handleRobotSelect} />
+            </div>
+            <div className="map-container">
+              <Map />
+            </div>
+          </div>
+          <div className="sort-by-container">
+            <h1 className="sort-by-label">Sort by:</h1>
+            <SortBy onSort={handleSort} />
+          </div>
+          <div className="product-card-container">
+            {filteredRobots.map((robot) => (
+              <ProductCard
+                key={robot.id}
+                imageSrc={robot.img}
+                name={robot.name}
+                type={robot.type}
+                pricePerDay={robot.pricePerDay}
+                features={robot.features}
+                description={robot.description}
+                tenure={tenure_int}
+              />
+            ))}
+          </div>
         </div>
       </div>
-      <div className="sort-by-container">
-        <h1 className="sort-by-label">Sort by:</h1>
-        <SortBy onSort={handleSort} />
-      </div>
-      <div className="product-card-container">
-        {filteredRobots.map(robot => (
-          <ProductCard
-            key={robot.id}
-            imageSrc={robot.img}
-            name={robot.name}
-            type={robot.type}
-            pricePerDay={robot.pricePerDay}
-            features={robot.features}
-            description={robot.description}
-            tenure={tenure_int}
-          />
-        ))}
-      </div>
     </div>
-  </div>
-</div>
   );
   
   

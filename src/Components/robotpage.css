@@ -1,0 +1,93 @@
+.product-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-color: white;
+    border-radius: 10px;
+  }
+  
+  .left-hand-side img {
+    max-width: 50%;
+    height: auto;
+    margin-left: 10vw;
+  }
+  
+  .right-hand-side {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+    margin-right: 70px;
+  }
+  
+  .product-name {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  .product-description {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .product-features {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .product-features div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+
+  .feature-text{
+    font-size: 20px;
+    color: rgb(102, 97, 97);
+  }
+  
+  .product-features img {
+    margin-right: 5px;
+    max-width: 30px;
+    max-height: 30px;
+    opacity: 0.4;
+  }
+  
+  .product-price-per-day {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 17vw;
+  }
+
+  .product-card__button1 {
+    display: flex;
+    justify-content: center;
+    background-color: #00BF63;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    height: 60px;
+    font-size: 22px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .product-card__button1-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-decoration: none;
+  }
+
+  .product-card__button1-link:hover {
+    color: white;
+  }
