@@ -96,7 +96,9 @@ function RobotPage() {
           <img src={img} alt={name} />
         </div>
         <div className="right-hand-side">
-          <div className="product-name"> {type} {name}</div>
+        <div className="product-name">
+  {type === "advertisement" ? `ADVERTISEMENT ON ${name}` : `${type} ${name}`}
+</div>
           <div className="product-description">{description}</div>
           <div className="product-features">
             {features.map(({ icon, text }, index) => (
