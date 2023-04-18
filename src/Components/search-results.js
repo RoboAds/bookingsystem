@@ -189,7 +189,7 @@ const SearchResults = ({}) => {
 
   return (
     <div className="main-container">
-      <div style={{ marginBottom: '-20px' }}>
+      <div style={{display: 'flex', alignItems: 'center' }}>
       <Navbar />
       </div>
       <div className="search-comp-mob-container">

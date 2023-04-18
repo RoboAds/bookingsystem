@@ -80,7 +80,7 @@ function SearchComp(props) {
       const location = document.getElementById("locationInput").value;
       const utcFromDateTime = fromDateTime ? new Date(fromDateTime).toUTCString() : '';
       const utcToDateTime = toDateTime ? new Date(toDateTime).toUTCString() : '';
-      navigate(`/search-results?from=${utcFromDateTime}&to=${utcToDateTime}&location=${location}&tenure=${tenure}`);
+      navigate(`/search-results/${utcFromDateTime}/${utcToDateTime}/${location}/${tenure}?from=${utcFromDateTime}&to=${utcToDateTime}&location=${location}&tenure=${tenure}`);
       setTenure(""); // reset the tenure state to empty
     }
   };
@@ -89,18 +89,28 @@ function SearchComp(props) {
     calculateTenure();
   }, [fromDateTime, toDateTime]);
 
+
+  const handleLocationChange = (e) => {
+    const newLocation = e.target.value;
+    setlocationParam(newLocation);
+    const urlSearchParams = new URLSearchParams(location.search);
+    urlSearchParams.set('location', newLocation);
+    navigate(`${location.pathname}?${urlSearchParams.toString()}`);
+  };
+
   return (
     <Form onSubmit={handleSubmit} className="search-form">
       <h3 >Search</h3>
       <Form.Group controlId="location">
       <label htmlFor="to-input" className="date-label" id="to-label">Event location:</label>
         <div className="location-input-wrapper">
-          <FormControl
-            id="locationInput"
-            type="text"
-            value={locationParam}
-            className="location-input"
-          />
+        <FormControl
+  id="locationInput"
+  type="text"
+  value={locationParam}
+  onChange={handleLocationChange}
+  className="location-input"
+/>
           <div className="search-icon-wrapper">
             <FontAwesomeIcon icon={faSearch} className="search-icon" />
           </div>

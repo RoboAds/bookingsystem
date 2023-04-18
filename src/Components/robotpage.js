@@ -80,7 +80,7 @@ function RobotPage() {
   const totalPrice = (pricePerDay * tenure);
 
   return (
-    <div>
+    <div >
       <Navbar></Navbar>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px' }}>
       {isMobile && (
@@ -114,8 +114,8 @@ function RobotPage() {
             </div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <div style={{ fontSize: '40px', color: '#12864E', fontWeight: '700' }}>
-              AED {totalPrice}
+            <div className="total-price" style={{ fontSize: '280%', color: '#12864E', fontWeight: '700' }}>
+             AED {totalPrice}
             </div>
           </div>
           <div className="product-card__button1">

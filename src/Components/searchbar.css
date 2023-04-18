@@ -129,3 +129,23 @@
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+
+
+@media only screen and (max-width: 768px) {
+  .dropdown-icon-wrapper {
+    display: none;
+  }
+  
+  .dropdown-icon {
+    display: none;
+  }
+  
+  
+  .dropdown-icon-wrapper2 {
+    display: none;
+  }
+  
+  .dropdown-icon2 {
+    display: none;
+  }
+}

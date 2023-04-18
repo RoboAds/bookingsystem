@@ -1,6 +1,7 @@
 .sort-by_container {
     display: flex;
     justify-content: space-between;
+    
   }
   
   .sort-by-option {

@@ -84,7 +84,7 @@ function SearchCompMob(props) {
       const location = document.getElementById("locationInput").value;
       const utcFromDateTime = fromDateTime ? new Date(fromDateTime).toUTCString() : '';
       const utcToDateTime = toDateTime ? new Date(toDateTime).toUTCString() : '';
-      navigate(`/search-results?from=${utcFromDateTime}&to=${utcToDateTime}&location=${location}&tenure=${tenure}`);
+      navigate(`/search-results/${utcFromDateTime}/${utcToDateTime}/${location}/${tenure}?from=${utcFromDateTime}&to=${utcToDateTime}&location=${location}&tenure=${tenure}`);
       setTenure(""); // reset the tenure state to empty
     }
   };

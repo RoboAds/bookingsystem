@@ -52,7 +52,7 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
-    margin-right: 22.2vw;
+    margin-right: 340px;
     margin-top: -20px;
   }
   
@@ -91,8 +91,8 @@
     }
     .main-content-container {
       align-items: center;
-      padding-right: 0;
-      padding-left: 55px;
+      padding: 45px;
+      padding-top: 5px;
     }
     .product-card-container {
       display: flex;
@@ -118,5 +118,12 @@
     .search-comp-mob-container {
       display: block;
       
+    }
+  }
+
+
+  @media screen and (min-width: 768px) {
+    .main-container {
+      align-items: center;
     }
   }

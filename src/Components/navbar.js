@@ -1,8 +1,6 @@
-import React from 'react';
-
 function Navbar() {
   return (
-    <div style={{ width: '100%', height: '80px', backgroundColor: '#084BB4', marginBottom: '20px' }}>
+    <div style={{top: 0, width: '0px', marginRight:'0px', height: '80px', backgroundColor: '#084BB4' }}>
       {/* Add your navbar content here */}
     </div>
   );
