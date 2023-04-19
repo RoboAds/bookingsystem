@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './filter.css';
+import '../styles/filter.css';
 
 function Filter({ robots, onFilterChange }) {
   const [selectedPrice, setSelectedPrice] = useState(null);

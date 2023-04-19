@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './sortby.css';
+import '../styles/sortby.css';
 
 function SortBy({ onSort }) {
   const [activeOption, setActiveOption] = useState('recommended');

@@ -1,24 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Form, Button, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
-import './searchbar.css';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import '../styles/searchbar.css';
 import Swal from 'sweetalert2';
 
-
-function SearchComp(props) {
+function Search() {
   const [fromDateTime, setFromDateTime] = useState("");
   const [toDateTime, setToDateTime] = useState("");
-  const [locationParam, setlocationParam] = useState("");
   const fromDateRef = useRef(null);
   const toDateRef = useRef(null);
   const [tenure, setTenure] = useState("");
-  const { from, to } = props;
 
   const navigate = useNavigate();
   
@@ -38,24 +33,6 @@ function SearchComp(props) {
       }, 1000);
     }
   };
-
-  const { from: propsFrom, to: propsTo } = props;
-  const location = useLocation();
-
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const from = searchParams.get("from");
-    const to = searchParams.get("to");
-    const locationParam = searchParams.get("location");
-    if (from && to) {
-      setFromDateTime(new Date(from));
-      setToDateTime(new Date(to));
-      setlocationParam(new String(locationParam))
-    } else {
-      setFromDateTime(propsFrom);
-      setToDateTime(propsTo);
-    }
-  }, [location, propsFrom, propsTo]);
 
   const calculateTenure = () => {
     if (fromDateTime && toDateTime) {
@@ -80,7 +57,7 @@ function SearchComp(props) {
       const location = document.getElementById("locationInput").value;
       const utcFromDateTime = fromDateTime ? new Date(fromDateTime).toUTCString() : '';
       const utcToDateTime = toDateTime ? new Date(toDateTime).toUTCString() : '';
-      navigate(`/search-results/${utcFromDateTime}/${utcToDateTime}/${location}/${tenure}?from=${utcFromDateTime}&to=${utcToDateTime}&location=${location}&tenure=${tenure}`);
+      navigate(`/search-results/${fromDateTime}/${toDateTime}/${location}/${tenure}?from=${fromDateTime}&to=${toDateTime}&location=${location}&tenure=${tenure}`);
       setTenure(""); // reset the tenure state to empty
     }
   };
@@ -89,28 +66,18 @@ function SearchComp(props) {
     calculateTenure();
   }, [fromDateTime, toDateTime]);
 
-
-  const handleLocationChange = (e) => {
-    const newLocation = e.target.value;
-    setlocationParam(newLocation);
-    const urlSearchParams = new URLSearchParams(location.search);
-    urlSearchParams.set('location', newLocation);
-    navigate(`${location.pathname}?${urlSearchParams.toString()}`);
-  };
-
   return (
     <Form onSubmit={handleSubmit} className="search-form">
       <h3 >Search</h3>
       <Form.Group controlId="location">
       <label htmlFor="to-input" className="date-label" id="to-label">Event location:</label>
         <div className="location-input-wrapper">
-        <FormControl
-  id="locationInput"
-  type="text"
-  value={locationParam}
-  onChange={handleLocationChange}
-  className="location-input"
-/>
+          <FormControl
+            id="locationInput"
+            type="text"
+            placeholder="Add a location"
+            className="location-input"
+          />
           <div className="search-icon-wrapper">
             <FontAwesomeIcon icon={faSearch} className="search-icon" />
           </div>
@@ -122,7 +89,7 @@ function SearchComp(props) {
         <Datetime
   inputProps={{
     id: 'from-input',
-    placeholder: {from},
+    placeholder: 'From',
     onClick: () => fromDateRef.current.focus(),
     ref: fromDateRef,
     className: 'date-input', // add this line to include the CSS class for the from date input
@@ -142,7 +109,7 @@ function SearchComp(props) {
         <Datetime
   inputProps={{
     id: 'to-input',
-    placeholder: {to},
+    placeholder: 'To',
     onClick: () => toDateRef.current.focus(),
     ref: toDateRef,
     className: 'date-input', // add this line to include the CSS class for the from date input
@@ -164,4 +131,4 @@ function SearchComp(props) {
   );
 }
 
-export default SearchComp;
+export default Search;

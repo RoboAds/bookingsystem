@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import './robotpage.css'
+import '../styles/robotpage.css'
 import Navbar from "./navbar";
 import { Link } from "react-router-dom";
-import './robotbookingpage.css'
+import '../styles/robotbookingpage.css'
 
 function RobotBooking() {
     const { name, type, tenure } = useParams();

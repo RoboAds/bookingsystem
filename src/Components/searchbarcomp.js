@@ -5,7 +5,7 @@ import { faSearch, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
-import './searchbar.css';
+import '../styles/searchbar.css';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';

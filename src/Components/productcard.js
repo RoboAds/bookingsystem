@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './productcard.css';
+import '../styles/productcard.css';
 import { useState, useEffect } from 'react';
 
 function ProductCard({ name, description, features, pricePerDay, imageSrc, type, tenure }) {

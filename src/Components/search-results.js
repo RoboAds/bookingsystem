@@ -7,7 +7,7 @@ import Map from './map';
 import SortBy from './sortby';
 import Models from './modelsort';
 import { useLocation } from 'react-router-dom';
-import './search-results.css'
+import '../styles/search-results.css'
 import SearchCompMob from './searchcompmobile';
 
 const SearchResults = ({}) => {
